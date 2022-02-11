@@ -5,7 +5,9 @@ import { SubjectModule } from './subject/subject.module';
 import configGenerator from './config/configuration';
 import { ConfigService } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { Connection } from 'typeorm';
+import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
+import { GraphQLModule } from '@nestjs/graphql';
+import { join } from 'path';
 
 @Module({
   imports: [
@@ -25,11 +27,19 @@ import { Connection } from 'typeorm';
       },
       inject: [ConfigService],
     }),
+    GraphQLModule.forRoot<ApolloDriverConfig>({
+      driver: ApolloDriver,
+      playground: true,
+      // definitions: {
+      //   path: join(process.cwd(), 'src/graphql.ts'),
+      // },
+      // typePaths: ['**/*.graphql'],
+      autoSchemaFile: true,
+    }),
     SubjectModule,
   ],
+
   controllers: [AppController],
   providers: [AppService],
 })
-export class AppModule {
-  constructor(private connection: Connection) {}
-}
+export class AppModule {}
