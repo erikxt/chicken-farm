@@ -20,6 +20,6 @@ export class Subject {
   @Column('json')
   labelNames: object;
 
-  @Column('int')
+  @Column('bigint')
   primaryCategoryId: number;
 }

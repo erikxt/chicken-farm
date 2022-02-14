@@ -7,7 +7,7 @@ export class SubjectController {
   constructor(private readonly subjectService: SubjectService) {}
 
   @Get(':id')
-  async getHello(@Param('id') id): Promise<Subject> {
+  async getSubject(@Param('id') id: number): Promise<Subject> {
     const subject: Subject = await this.subjectService.findOne(id);
     if (subject === undefined) {
       throw new NotFoundException();
