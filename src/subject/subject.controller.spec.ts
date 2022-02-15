@@ -21,7 +21,6 @@ describe('SubjectController', () => {
       ],
     }).compile();
 
-    // subjectService = module.get<SubjectService>(SubjectService);
     subjectController = module.get<SubjectController>(SubjectController);
   });
 

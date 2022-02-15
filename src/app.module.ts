@@ -8,6 +8,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
 import { GraphQLModule } from '@nestjs/graphql';
 import { join } from 'path';
+import { CategoryModule } from './category/category.module';
 
 @Module({
   imports: [
@@ -37,6 +38,7 @@ import { join } from 'path';
       autoSchemaFile: true,
     }),
     SubjectModule,
+    CategoryModule,
   ],
 
   controllers: [AppController],

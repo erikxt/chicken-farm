@@ -15,6 +15,6 @@ export class SubjectService {
   }
 
   async findOne(id: number): Promise<Subject> {
-    return await this.subjectRepository.findOne(id);
+    return this.subjectRepository.findOne(id);
   }
 }
