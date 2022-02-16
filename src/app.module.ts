@@ -29,11 +29,6 @@ import { CategoryModule } from './category/category.module';
     }),
     GraphQLModule.forRoot<ApolloDriverConfig>({
       driver: ApolloDriver,
-      playground: true,
-      // definitions: {
-      //   path: join(process.cwd(), 'src/graphql.ts'),
-      // },
-      // typePaths: ['**/*.graphql'],
       autoSchemaFile: true,
     }),
     SubjectModule,
