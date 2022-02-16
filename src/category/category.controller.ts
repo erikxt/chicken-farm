@@ -6,7 +6,7 @@ import {
   PrimaryCategoryService,
 } from './category.service';
 
-@Controller('category')
+@Controller()
 export class CategoryController {
   constructor(
     private readonly primaryCategoryService: PrimaryCategoryService,
@@ -14,12 +14,12 @@ export class CategoryController {
     private readonly labelInfoService: LabelInfoService,
   ) {}
 
-  @Get()
+  @Get('category')
   async getPrimaryCategories(): Promise<PrimaryCategory[]> {
     return this.primaryCategoryService.findAll();
   }
 
-  @Get(':id')
+  @Get('category/:id')
   async getPrimaryCategory(@Param('id') id: number): Promise<PrimaryCategory> {
     const result: PrimaryCategory = await this.primaryCategoryService.findOne(
       id,
@@ -30,30 +30,34 @@ export class CategoryController {
     return result;
   }
 
-  @Get(':id/info')
+  @Get('category/:id/info')
   async getCategoryInfos(@Param('id') id: number): Promise<CategoryInfo[]> {
     return this.categoryInfoService.findAllByPrimaryCategoryId(id);
   }
 
-  @Get(':primaryCategoryId/info/:categoryId')
+  @Get('category/:primaryCategoryId/info/:categoryId')
   async getCategoryInfo(
     @Param('categoryId') categoryId: number,
   ): Promise<CategoryInfo> {
     return this.categoryInfoService.findOne(categoryId);
   }
 
-  @Get(':primaryCategoryId/info/:categoryId/label')
+  @Get('category/:primaryCategoryId/info/:categoryId/label')
   async getLabelInfos(
     @Param('categoryId') categoryId: number,
   ): Promise<LabelInfo[]> {
     return this.labelInfoService.findAllByCategoryId(categoryId);
   }
 
-  @Get(':primaryCategoryId/info/:categoryId/label/:id')
+  @Get('label')
+  async getAllLabelInfos(): Promise<LabelInfo[]> {
+    return this.labelInfoService.findAll();
+  }
+
+  @Get('category/:primaryCategoryId/label')
   async getLabelInfo(
-    @Param('categoryId') categoryId: number,
-    @Param('id') id: number,
-  ): Promise<LabelInfo> {
-    return this.labelInfoService.findOne(categoryId, id);
+    @Param('primaryCategoryId') primaryCategoryId: number,
+  ): Promise<LabelInfo[]> {
+    return this.labelInfoService.findAllByPrimaryCategoryId(primaryCategoryId);
   }
 }
