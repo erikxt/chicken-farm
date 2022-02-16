@@ -7,7 +7,6 @@ import { ConfigService } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
 import { GraphQLModule } from '@nestjs/graphql';
-import { join } from 'path';
 import { CategoryModule } from './category/category.module';
 
 @Module({
@@ -40,7 +39,6 @@ import { CategoryModule } from './category/category.module';
     SubjectModule,
     CategoryModule,
   ],
-
   controllers: [AppController],
   providers: [AppService],
 })
