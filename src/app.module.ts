@@ -8,6 +8,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
 import { GraphQLModule } from '@nestjs/graphql';
 import { CategoryModule } from './category/category.module';
+import { PageModule } from './page/page.module';
 
 @Module({
   imports: [
@@ -29,10 +30,12 @@ import { CategoryModule } from './category/category.module';
     }),
     GraphQLModule.forRoot<ApolloDriverConfig>({
       driver: ApolloDriver,
+      // autoSchemaFile: 'src/schema.gql',
       autoSchemaFile: true,
     }),
     SubjectModule,
     CategoryModule,
+    PageModule,
   ],
   controllers: [AppController],
   providers: [AppService],
