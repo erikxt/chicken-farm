@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { LabelInfo } from 'src/category/category.entity';
-import { Subject } from 'src/subject/subject.entity';
+import { LabelInfo } from '../category/category.entity';
+import { Subject } from '../subject/subject.entity';
 import { Repository } from 'typeorm';
 
 @Injectable()

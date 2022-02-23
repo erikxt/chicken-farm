@@ -1,6 +1,6 @@
 import { Controller, Get, Query } from '@nestjs/common';
 import { ApiQuery } from '@nestjs/swagger';
-import { Subject } from 'src/subject/subject.entity';
+import { Subject } from '../subject/subject.entity';
 import { PageService } from './page.service';
 
 @Controller('page')
