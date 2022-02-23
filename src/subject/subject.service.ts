@@ -14,6 +14,10 @@ export class SubjectService {
     return this.subjectRepository.find();
   }
 
+  async findAllFields(fields: any[]): Promise<Subject[]> {
+    return this.subjectRepository.find({ select: fields });
+  }
+
   async findOne(id: number): Promise<Subject> {
     return this.subjectRepository.findOne(id);
   }
