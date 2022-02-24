@@ -11,6 +11,12 @@ async function bootstrap() {
     customCssUrl:
       'https://cdn.bootcdn.net/ajax/libs/swagger-ui/4.3.0/swagger-ui.css',
   });
+  app.enableCors({
+    origin: '*',
+    credentials: true,
+    methods: 'GET,POST',
+    optionsSuccessStatus: 204,
+  });
   await app.listen(3000);
 }
 bootstrap();
