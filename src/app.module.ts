@@ -1,4 +1,4 @@
-import { Module } from '@nestjs/common';
+import { CacheModule, Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { SubjectModule } from './subject/subject.module';
@@ -36,6 +36,7 @@ import { PageModule } from './page/page.module';
     SubjectModule,
     CategoryModule,
     PageModule,
+    CacheModule.register({ ttl: 3600, isGlobal: true }),
   ],
   controllers: [AppController],
   providers: [AppService],

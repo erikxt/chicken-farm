@@ -34,4 +34,9 @@ export class SubjectController {
     const result = await this.subjectService.findAllFields(fieldArray);
     return result;
   }
+
+  @Get('/id/all')
+  async getAllSubjectIds(): Promise<number[]> {
+    return this.subjectService.findAllIds();
+  }
 }
